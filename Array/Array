@@ -1,0 +1,66 @@
+////////////////////////////////
+
+definition & properties
+
+////////////////////////////////
+
+
+Array : data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key
+      : 메모리 상에 원소를 연속하게 배치한 자료구조, 원래 배열은 길이를 변경하는게 불가능 하지만 자료구조로서의 배열은 길이 변경이 가능하다.
+      - properties
+      1.check or change values of k's elements in O(1). 
+        O(1)에 k번째 원소를 확인/변경 가능.
+      2.memory overhead is almost zero
+        추가적으로 소모되는 메모리의 양이 거의 없음
+      3.high cache hit rate
+        캐시 힛 비율이 높다.
+      4.restriction during allocation (because of continuous memory space)
+        메모리 상에 연속한 구간을 잡아야 해서 할당에 제약이 걸림
+        
+      insert or delete values of array in random space : O(N) (because values need to pull or push from index which is inserted or deleted to end)
+      배열에서 임의의 위치에 있는 원소를 추가하거나 제거할 때 O(N)의 시간복잡도가 필요하다. 왜냐하면 추가하거나 제거할 때는 해당 위치부터 끝까지 원소들을 밀거나 당겨야한다.
+  
+////////////////////////////////  
+  
+ initialization
+
+////////////////////////////////
+
+ a.g.
+ 
+int a[21];
+int b[21][21];
+ 
+// 1. memset             
+/*
+#include <cstring>
+void* memset(void* ptr, int value, size_t num); void* ptr : memory start address 메모리 시작 주소, int value : setting value 셋팅 값, size_t num : length 길이
+*/
+
+memset(a, 0, sizeof a);
+memset(b, 0, sizeof b);
+ 
+-> shortest! but value must be 0 because it just represent 1byte, so can't represent int(4bytes) or others.
+ 
+// 2. for
+for(int i=0; i<21; i++)
+      a[i] = 0;
+for(int i=0; i<21; i++){
+      for(int j=0; j<21; j++)
+            b[i][j] = 0;
+}
+
+-> longest! but fewest error.
+
+// 3. fill
+
+/*
+#include <algorithm>
+void fill (ForwardIterator first, ForwardIterator last, const T& val);
+first: 채우고자 하는 자료구조의 시작위치 iterator, last: 채우고자 하는 자료구조의 끝위치 iterator, val: first부터 last전까지 채우고자 하는 값
+*/
+fill(a, a+21, 0);
+for(int i=0; i<21; i++)
+      fill(b[i], b[i]+21, 0);
+
+-> longer than memset, but fewer error. OK!!!
