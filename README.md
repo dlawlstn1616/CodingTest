@@ -1,4 +1,4 @@
-## echo "# PokemonReviewBoot3" >> README.md
+## GitHub First Init
 * git init
 *  //.git 폴더가 생성됨
 * git add .
