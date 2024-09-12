@@ -1,5 +1,5 @@
-echo "# PokemonReviewBoot3" >> README.md
-$ git init
+## echo "# PokemonReviewBoot3" >> README.md
+* git init
    .git 폴더가 생성됨
 $ git add .
 $ git branch -M main
