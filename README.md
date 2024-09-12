@@ -21,3 +21,13 @@
 * //if you want add exact file, replace . to your file name
 * git commit -m "text"
 * git push
+
+## Branch
+* branch 이동
+* git checkout test
+
+* branch 생성
+* git checkout -b test
+
+* local branch를 origin으로 push
+* git push origin test
