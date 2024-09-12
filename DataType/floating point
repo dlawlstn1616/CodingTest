@@ -1,0 +1,66 @@
+//////////////////////////////
+
+datatypes
+
+//////////////////////////////
+
+# float (4bytes)
+# double (8bytes)
+
+e.g.
+3.75 = 2 + 1 + 0.5 + 0.25 = 2^1 + 2^0 + 2^-1 + 2^-2 = 11.11(2)
+1/3 = 0.333333... = 0.25 + 0.0625 + ... =  2^-2 + 2^-4 + 2^-6 + 2^-8 + ... = 0.01010101...(2)
+
+///////////////////////////////
+
+expression field (by IEEE -754 format)
+
+///////////////////////////////
+
+# real number : sign field + exponent field + fraction field     
+실수는 부호를 결정하는 부분, 지수를 결정하는 부분, 유효숫자를 결정하는 부분으로 표사됨 
+
+# float  = 4bytes = 32bits : sign field(1bits) + exponent field(8bits)  + fraction field(23bits)
+# double = 8bytes = 64bits : sign field(1bits) + exponent field(11bits) + fraction field(52bits)
+                           부호                지수                      유효숫자
+e.g.
+3561.234 = 3.561234 x 10^3
+11101.001(2) = 1.1101001(2) x 2^4
+
+-6.75 = -1.1011(2) x 2^2
+-1           -> sign field
+2 (2^2's ^2) -> exponent field -> 127(01111111) + 2(00000010) = 129(10000001) // for negative exponentiation (+127)
+0.1011       -> fraction field -> 10110000000...
+
+////////////////////////////////
+
+calculation error
+
+////////////////////////////////
+
+# 1. In real number, save real number or calculate real number must cause error
+실수를 저장하거나 계산하는 과정에서는 오차가 반드시 발생한다.
+
+e.g.
+int main(void) {
+  if(0.1 + 0.1 + 0.1 == 0.3) cout << "true"
+  else cout << "false"
+  return 0;
+}                      // result = "false", 0.1 is infinite decimals so it already has error
+                          이미 0.1이 무한소수이므로 오차가 존재, 이걸 3번 더하면 오차가 더 커질 뿐이다.
+
+float  : significant figures = 6   float이 보장하는 유효숫자는 6자리 
+double : significant figures = 15  double이 보장하는 유효숫자는 15자리 이다.
+
+# 2. do not save longlong values to double variables
+longlong 범위의 정수를 double에 함부로 담으면 안된다.
+
+- it exceeds float's significant figures
+longlong 범위의 정수가 double이 보장하는 유효숫자를 넘어서기 때문에 불가능, 다만 int는 충분히 가능하다.
+
+# 3. do not use equal sign "=", when compare two different real numbers
+서로 다른 실수를 비교할 때는 등호를 사용해서는 안된다.
+
+- it already has error in its value
+if(a==b) (x)
+if(abs(a-b) < le-12) (O)  // le-12 means 10^-12

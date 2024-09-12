@@ -1,0 +1,61 @@
+/////////////////////////
+
+cin, cout
+
+/////////////////////////
+
+# in c++, we can use cin, cout instead of printf, scanf
+c++에서는 cin, cout을 제공하는데 c에서 제공하던 printf,scanf도 지원을 한다.
+
+# but printf, scanf can't deal with c++ string / in c, string deals with char*
+다만 c에서 제공하던 printf, scanf는 c++의 string을 처리하지 못한다, 왜냐하면 배열 처리방식이 다르기 때문이다.
+
+# both scanf, cin has problem with blank input, get input before blank
+scanf와 cin 둘다 입력을 받는 표준 입력 함수인데, 공백을 입력으로 받을 때, 문제가 발생한다. 공백 앞까지만 입력을 받는다.
+
+e.g.
+int main(void) {                                      
+  char a[10];
+  printf("input : ");                                     // 1. scanf  ->  get input before LF, 줄바꿈이 나오기 전까지 입력을 받도록 명시하는 방법
+  scanf("%s", a);                                         char a1[10];
+  printf("a is %s\n, a");                                 scanf("%[^\n]", a1);
+}
+/***result***                                             // 2. gets function (for security problem, deleted after version c++14)
+input : hi hello                    there's 3 solution    char a2[10];
+a is hi                             ------------------>   gets(a2);
+************/                                             puts(a2);
+
+int main(void) {                                          // 3. getline function (only c++ string)   ->  most used, simple method!! 
+  string s;                                               string s;
+  cout << "input : ";                                     getline(cin, s);
+  cin >> s;                                               cout << s;
+  cout << "s is " << s;
+}
+/***result***
+input : hi hello
+a is hi
+************/
+
+
+/////////////////////////////////////
+
+ios::sync_with_stdio(0), cin.tie(0)   *** just for online code test!!!
+
+/////////////////////////////////////
+
+To prevent timeout by inputs/outputs, when inputs/outputs are very large
+In general, c++ is synchronized with c++ stream and c stream.
+So we can get extra computational time by stop synchronization
+-> ios::sync_with_stdio(0)   (only in visual studio code, Not visual studio)
+
+기본적으로 c++은 c stream과 c++ stream을 동기화 하고있다. 각자 사용하는 stream이 다르기 때문에
+코드에서 혼용해서 사용한다 하더라도 코드의 흐름대로 출력이 나오게금 처리를 하는데 c++만 사용을 하게 된다면
+이 동기화 과정이 필요가 없기 때문에 동기화를 끊음으로서 프로그램 수행시간에서 이득을 챙길 수 있다.
+-> ios::sync_with_stdio(0)   visual studio code에서만 해당하는 내용이다.
+
+
+cin.tie(0) -> in general, before console output, outputs store in buffer.
+              출력이 되기전에 출력 버퍼에 임시 저장되고 순서대로 출력이 되는데
+              순서가 꼬이지 않게 출력버퍼를 미리 비워주는데 이 과정을 생략하는게 cin.tie이다
+              온라인 코딩 테스트에서는 입출력 순서를 고려하지 않고 출력값만 확인하기 때문에
+              해당 출력버퍼를 비워주는 과정을 생략해서 수행시간에서 이득을 챙길 수 있다.
