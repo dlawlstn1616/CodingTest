@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 // 이름(변수, 함수, 클래스 등)이 충돌하지 않도록 묶어서 관리하는 공간
 // Java에서는 상단에 package가 동일한 역할을 수행
