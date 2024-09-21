@@ -23,7 +23,7 @@
 * git add .
 * //if you want add exact file, replace . to your file name
 * git commit -m "text"
-* git push
+* git push origin main(the name of branch)
 
 ## Branch
 * branch 이동
