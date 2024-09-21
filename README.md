@@ -14,6 +14,9 @@
 * git remote set-url origin https://토큰번호@github.com/username/MyFirstGit.git
 * git push -u origin main
 
+## Pull repository
+* git pull origin main
+
 ## Push Something to repository
 * git branch
 * //you should check your branch before push
