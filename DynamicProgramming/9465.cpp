@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+<<<<<<< HEAD
 // n의 최대값이 100,000
 #define MAX 100000
 
@@ -10,12 +11,17 @@ using namespace std;
 // BottomUp : 반복문 형식이라 함수 호출 오버헤드가 없고, 중복 계산 발생 X, 더 빠를 수 있음
 
 // 메인함수
+=======
+int n, int stk[2][100000];
+
+>>>>>>> 019e58d3318b4d8a6560ecea54be18cfc431b805
 int main(int argc, char** argv)
 {
     // 성능향상을 위한 option
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+<<<<<<< HEAD
     int t, n;
     // 배열 요소를 0으로 초기화
     int stk[2][MAX] = {0};
@@ -66,4 +72,19 @@ int main(int argc, char** argv)
     }
 
     return 0;
+=======
+    int t;
+    cin >> t;
+
+    for(int i=0; i<t; i++){
+        cin >> n;
+        for(int j=0; j<2; j++){
+            for(int k=0; k<n; k++){
+                cin >> stk[j][k];
+            }
+        }
+    }
+
+    
+>>>>>>> 019e58d3318b4d8a6560ecea54be18cfc431b805
 }
