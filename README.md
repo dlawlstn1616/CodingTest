@@ -14,6 +14,10 @@
 * git remote set-url origin https://토큰번호@github.com/username/MyFirstGit.git
 * git push -u origin main
 
+## GitHub clone
+* git clone https://github.com/username/OtherGit.git
+* git pull
+
 ## Pull repository
 * git pull origin main
 
@@ -27,10 +31,10 @@
 
 ## Branch
 * branch 이동
-* git checkout test
+* git checkout <name>
 
 * branch 생성
-* git checkout -b test
+* git checkout -b <name>
 
 * local branch를 origin으로 push
-* git push origin test
+* git push origin <name>
