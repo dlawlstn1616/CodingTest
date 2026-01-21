@@ -7,14 +7,14 @@ const int MAXN = 1'000'000;
 int parent[MAXN + 1];
 int rankArr[MAXN + 1];
 
-// find: 경로 압축
+// 경로 압축
 static int find(int x) {
     if (parent[x] == x)
         return x;
     return parent[x] = find(parent[x]);
 }
 
-// union: 랭크 기반 합치기
+// 랭크 기반 합치기
 static void unite(int a, int b) {
     a = find(a);
     b = find(b);
